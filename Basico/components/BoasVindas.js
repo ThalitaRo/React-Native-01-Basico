@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Alert } from 'react-native';
 
 function BoasVindas(props) {
 
@@ -47,15 +47,6 @@ function BoasVindas(props) {
         value={sobrenome}
         />
 
-
-
-        <View style={styles.botaoContainer}>
-            <Button
-            OnPress={_apresentaMensagem}
-            title= 'Ok'
-            />
-        </View>
-
     {mostraMensagem && (
         <View>
       <Text style={styles.texto}>Olá {nome} {sobrenome}! {props.saudacao}</Text>
@@ -63,47 +54,57 @@ function BoasVindas(props) {
         </View>
     )}
 
-         <View style={styles.botaoContainer}>
-            <Button
-            OnPress={_limpar}
-            title= 'Limpar  '
-            />
-        </View>
+         <TouchableOpacity style={styles.botaoContainer} onPress={_apresentaMensagem}>
+            <Text style={styles.botaoTexto}>Ok</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.botaoContainer} onPress={_limpar}>
+            <Text style={styles.botaoTexto}>Limpar</Text>
+            </TouchableOpacity>
 
     </View>
   )
 }
 const styles = StyleSheet.create({
-  container: {
-     backgroundColor: '#081a31',
-     width: 300,
-     borderRadius: 5,
-     padding: 10,
-     margin: 10
-  },
-  titulo: {
-      fontsize:16,
-      color: '#FFFFFF',
-      fontWeight: 'bold',
-      textAlign:'center',
-  },
-  texto: {
-    fontSize: 14,
-    color: '#FFFFFF',
-    textAlign: "center",
-  },
-  campo: {
-       backgroundColor: '#081a31',
-      fontSize: 14,
-      marginBottom: 5,
-      marginTop: 5,
+ container:{
+      backgroundColor: 'black',
+      width: 300,
       borderRadius: 5,
-      height: 35,
+      padding: 10,
+      margin: 10  
+    },
+    titulo:{
+        fontStyle:16,
+        color:'white',
+        fontWeight:'bold',
+        textAlign:'center',
+    },
+    campo:{
+        color:'#FFFFFF',
+        backgroundColor:'#ff4d4d',
+        fontSize:14,
+        height:35,
+        marginBottom:5,
+        marginTop:5,
+        borderRadius:5,
+        textAlign:'center',
+        placeholderTextColor:'#FFFFFF',
+    },
+    botaoContainer:{
+        color:'white',
+        marginBottom: 5,
+        marginTop: 5,
+        borderRadius: 5,
+        height:40,
+        borderWidth:2,
+        borderColor:'white',
+        backgroundColor:'#ff4d4d',
+        justifyContent:'center',
+        alignItems:'center',
   },
-  botaoContainer:{
-      marginBottom: 5,
-      marginTop: 5,
-      borderRadius: 5,
-  },
+  botaoTexto:{
+        fontSize:14,
+        color:'white',
+    },
 });
 export default BoasVindas;
